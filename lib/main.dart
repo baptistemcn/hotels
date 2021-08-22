@@ -1,19 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+const global_green = Color(0xFF54D3C2);
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hotels',
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Hotels')),
-        body: const Center(child: Text('Hello World')),
+        debugShowCheckedModeBanner: false,
+        title: 'Hotels Booking',
+        home: HomePage());
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CustomAppBar(),
+      body: Container(),
+    );
+  }
+}
+
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  Size get preferredSize => new Size.fromHeight(50);
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back,
+          color: Colors.grey[500],
+          size: 20,
+        ),
+        onPressed: null,
       ),
+      title: Text(
+        'Explore',
+        style: GoogleFonts.nunito(
+            color: Colors.black, fontSize: 22, fontWeight: FontWeight.w800),
+      ),
+      actions: [
+        IconButton(
+          icon: Icon(
+            Icons.favorite_outline_rounded,
+            color: Colors.grey[500],
+            size: 20,
+          ),
+          onPressed: null,
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.place,
+            color: Colors.grey[500],
+            size: 20,
+          ),
+          onPressed: null,
+        ),
+      ],
+      centerTitle: true,
+      backgroundColor: Colors.white,
     );
   }
 }
